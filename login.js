@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const tazkira = form.tazkiraNumber.value.trim().toLowerCase();
     const caseNumber = form.caseNumber.value.trim().toLowerCase();
 
-    fetch('data.json')
-      .then(response => {
+fetch('./data.json')
+  .then(response => {
         if (!response.ok) throw new Error("Failed to load user data");
         return response.json();
       })
