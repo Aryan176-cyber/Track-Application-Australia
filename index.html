@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Australian Embassy</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h2>Track your Application</h2>
+    <form id="loginForm">
+      <input type="text" id="firstName" placeholder="First Name" required />
+      <input type="text" id="lastName" placeholder="Last Name" required />
+      <input type="text" id="nationality" placeholder="Nationality" required />
+      <input type="text" id="passportNumber" placeholder="Passport Number" required />
+      <input type="text" id="tazkiraNumber" placeholder="Tazkira Number" required />
+      <input type="text" id="caseNumber" placeholder="Case Number" required />
+      <button type="submit">Track</button>
+    </form>
+    <p id="errorMessage" class="error"></p>
+  </div>
+
+  <script>
+    const users = [
+      {
+        firstName: "Ahmad",
+        lastName: "Rahimi",
+        nationality: "Afghanistan",
+        passportNumber: "P123456",
+        tazkiraNumber: "T987654",
+        caseNumber: "C001",
+        redirectUrl: "dashboard1.html"
+      },
+      {
+        firstName: "Fatima",
+        lastName: "Azizi",
+        nationality: "Afghanistan",
+        passportNumber: "P654321",
+        tazkiraNumber: "T123456",
+        caseNumber: "C002",
+        redirectUrl: "dashboard2.html"
+      },
+      {
+        firstName: "Zabi",
+        lastName: "Nazari",
+        nationality: "Afghanistan",
+        passportNumber: "P112233",
+        tazkiraNumber: "T445566",
+        caseNumber: "C003",
+        redirectUrl: "dashboard3.html"
+      }
+    ];
+
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const f = document.getElementById("firstName").value.trim();
+      const l = document.getElementById("lastName").value.trim();
+      const n = document.getElementById("nationality").value.trim();
+      const p = document.getElementById("passportNumber").value.trim();
+      const t = document.getElementById("tazkiraNumber").value.trim();
+      const c = document.getElementById("caseNumber").value.trim();
+
+      const match = users.find(user =>
+        user.firstName === f &&
+        user.lastName === l &&
+        user.nationality === n &&
+        user.passportNumber === p &&
+        user.tazkiraNumber === t &&
+        user.caseNumber === c
+      );
+
+      if (match) {
+        window.location.href = match.redirectUrl;
+      } else {
+        document.getElementById("errorMessage").textContent = "Login information does not match any record.";
+      }
+    });
+  </script>
+</body>
+</html>
