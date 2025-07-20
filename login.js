@@ -1,41 +1,33 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("loginForm");
-  const errorMessage = document.getElementById("errorMessage");
-
-  form.addEventListener("submit", (e) => {
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.querySelector('form');
+  
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const firstName = form.firstName.value.trim().toLowerCase();
-    const lastName = form.lastName.value.trim().toLowerCase();
-    const nationality = form.nationality.value.trim().toLowerCase();
-    const passport = form.passportNumber.value.trim().toLowerCase();
-    const tazkira = form.tazkiraNumber.value.trim().toLowerCase();
-    const caseNumber = form.caseNumber.value.trim().toLowerCase();
+    const firstName = document.querySelector('#firstName').value.trim();
+    const lastName = document.querySelector('#lastName').value.trim();
+    const passport = document.querySelector('#passport').value.trim();
+    const caseNumber = document.querySelector('#caseNumber').value.trim();
 
-fetch('./data.json')
-  .then(response => {
-        if (!response.ok) throw new Error("Failed to load user data");
-        return response.json();
-      })
-      .then(users => {
-        const matchedUser = users.find(user =>
-          user.firstName.toLowerCase() === firstName &&
-          user.lastName.toLowerCase() === lastName &&
-          user.nationality.toLowerCase() === nationality &&
-          user.passport.toLowerCase() === passport &&
-          user.tazkira.toLowerCase() === tazkira &&
-          user.caseNumber.toLowerCase() === caseNumber
+    fetch('data.json')
+      .then(response => response.json())
+      .then(data => {
+        const matchedUser = data.find(user =>
+          user.firstName === firstName &&
+          user.lastName === lastName &&
+          user.passport === passport &&
+          user.caseNumber === caseNumber
         );
 
         if (matchedUser) {
           window.location.href = matchedUser.redirectUrl;
         } else {
-          errorMessage.textContent = "Login information does not match any record.";
+          alert('Login information does not match any record.');
         }
       })
-      .catch(err => {
-        errorMessage.textContent = "Error loading user data.";
-        console.error(err);
+      .catch(error => {
+        console.error('Error loading data.json:', error);
+        alert('Unable to load user data.');
       });
   });
 });
