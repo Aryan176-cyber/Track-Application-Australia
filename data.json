@@ -1,9 +1,29 @@
-{
-  firstName: "Ahmad",
-  lastName: "Rahimi",
-  nationality: "Afghanistan",
-  passportNumber: "P123456",
-  tazkiraNumber: "T987654",
-  caseNumber: "C001",
-  redirectUrl: "dashboard1.html"
-}
+[
+  {
+    "firstName": "Ahmad",
+    "lastName": "Rahimi",
+    "nationality": "Afghan",
+    "passport": "P1234567",
+    "tazkira": "T987654",
+    "caseNumber": "C11111",
+    "redirectUrl": "https://example.com/dashboard1"
+  },
+  {
+    "firstName": "Zahra",
+    "lastName": "Noori",
+    "nationality": "Afghan",
+    "passport": "P7654321",
+    "tazkira": "T123456",
+    "caseNumber": "C22222",
+    "redirectUrl": "https://example.com/dashboard2"
+  },
+  {
+    "firstName": "Omid",
+    "lastName": "Karimi",
+    "nationality": "Afghan",
+    "passport": "P1122334",
+    "tazkira": "T998877",
+    "caseNumber": "C33333",
+    "redirectUrl": "https://example.com/dashboard3"
+  }
+]
