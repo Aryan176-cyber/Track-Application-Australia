@@ -26,11 +26,11 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
       if (matchedUser) {
         window.location.href = matchedUser.redirectUrl;
       } else {
-        alert('Login information does not match any record.');
+        document.getElementById('errorMessage').textContent = 'Login information does not match any record.';
       }
     })
     .catch(error => {
       console.error('Error fetching JSON:', error);
-      alert('An error occurred while trying to log in.');
+      document.getElementById('errorMessage').textContent = 'An error occurred while trying to log in.';
     });
 });
